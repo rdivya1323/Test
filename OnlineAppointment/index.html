@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Application</title>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+<script src="js/app.js" ></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+
+body, html {
+    height: 100%;
+}
+
+.bg { 
+    /* The image used */
+    background-image: url("images/bg.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px; }
+
+.dialogdemoBasicUsage button {
+  width: 200px; }
+
+.dialogdemoBasicUsage div#status {
+  color: #c60008; }
+
+.dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+  margin-bottom: 0; }
+</style>
+</head>
+
+<body  class="bg" >
+
+<div ng-app="myApp" ng-controller="AppCtrl"  ng-cloak>
+
+
+ 	<br><br>
+<div align="center">
+    
+      <h4 style="padding-right:92px">Start Date</h4>
+      <md-datepicker ng-model="myDate1" md-placeholder="Enter date" md-is-open="ctrl.isOpen1" ></md-datepicker>
+      <md-button class="md-primary md-raised" ng-click="ctrl.isOpen1 = true">Open</md-button>
+  
+
+    <br><br><br>
+    <div style="padding-left:430px; padding-right: 400px;" ><span ng-repeat="i in getNumber(totalDays) track by $index">
+      <form style="width:107px;float: left;" action="card.templ1.php">
+    <i ng-if="angularswitch($index)">
+      
+        <input type="hidden" name="seldate" value='{{pickDates(myDate1,$index) | date : "dd.MM.y"}}'>
+    <md-button type='submit' class="md-raised md-warn" ng-click="showAdvanced($event,pickDates(myDate1,$index)| date : 'MMM d, y')">{{pickDates(myDate1,$index) | date : "dd.MM.y"}}</md-button><br>
+ 
+    </i>
+     </form>
+     <form style="width:107px; float: left;" action="card.templ1.php">
+    <i ng-if="!angularswitch($index)">
+      
+        <input type="hidden" name="seldate" value='{{pickDates(myDate1,$index) | date : "dd.MM.y"}}'>
+    <md-button type="hidden" class="md-raised md-warn" ng-click="showAdvanced($event,pickDates(myDate1,$index)| date : 'MMM d, y')">{{pickDates(myDate1,$index) | date : "dd.MM.y"}}</md-button>
+
+    </i>
+      </form>
+    </span></div>
+	
+  </div>
+
+</div>
+
+
+
+
+</body>
+</html>
